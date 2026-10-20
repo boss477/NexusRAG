@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import StrEnum
 from uuid import UUID, uuid4
 
@@ -41,7 +41,7 @@ class Document(BaseModel):
     modality: Modality
     title: str | None = None
     checksum: str | None = None
-    ingested_at: datetime = Field(default_factory=datetime.utcnow)
+    ingested_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     metadata: dict[str, str] = Field(default_factory=dict)
 
 
