@@ -72,6 +72,7 @@ Open http://localhost:8000/docs.
 
 ## Current status
 
+Day 1–3 are complete: project foundation, settings/logging/readiness hardening, and canonical document schemas are in place.
 
-Day 1 decisions are recorded in [docs/day-01-foundation.md](docs/day-01-foundation.md).
+Decisions are recorded in [docs/](docs/).
 
