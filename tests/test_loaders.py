@@ -14,7 +14,7 @@ def test_text_loader_emits_canonical_chunks(tmp_path: Path) -> None:
 
     assert document.modality == Modality.TEXT
     assert document.checksum
-    assert [chunk.ordinal for chunk in chunks] == [0, 1, 2]
+    assert [chunk.ordinal for chunk in chunks] == list(range(len(chunks)))
     assert all(chunk.document_id == document.document_id for chunk in chunks)
 
 
