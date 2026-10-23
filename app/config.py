@@ -16,6 +16,10 @@ class Settings(BaseSettings):
     langchain_api_key: str | None = None
     langchain_project: str = "NexusRAG"
     openai_api_key: str | None = None
+    gemini_api_key: str | None = None
+    embedding_provider: str = "hash-test"
+    gemini_embedding_model: str = "gemini-embedding-2"
+    embedding_dimension: int = 1536
     tavily_api_key: str | None = None
 
     @field_validator("api_prefix")

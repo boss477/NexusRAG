@@ -88,16 +88,20 @@ Background:
 
 ### Day 7 — Gemini Embedding 2
 
-- Add paragraph and sentence-aware splitting.
-- Add configurable chunk size and overlap.
-- Preserve section headings and source metadata.
+- Added Gemini Embedding 2 text adapter.
+- Added configurable model name and output dimension.
+- Added API-key and response-dimension validation.
+- Added mocked provider tests.
 
-- Add Gemini Embedding 2 adapter.
-- Support text, image, audio, video, and PDF inputs.
-- Add configurable output dimensions.
-- Document re-indexing requirements when dimensions change.
+### Day 8 — EmbeddingGemma 2 and local multimodal embeddings
 
-### Day 8 — Qdrant indexing
+- Add the local `google/embeddinggemma-2` adapter.
+- Support 768-dimensional multimodal embeddings.
+- Add optional text-only, image, audio, and video encoder loading.
+- Add task-specific query/document prefixes.
+- Add truncation and re-normalization tests.
+
+### Day 9 — Qdrant indexing
 
 - Create collections with dimension checks.
 - Index `DocumentChunk` records.

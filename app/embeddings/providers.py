@@ -129,3 +129,50 @@ class OllamaEmbeddingProvider:
     def embed_query(self, text: str) -> list[float]:
         return self.embed_documents([text])[0]
 
+
+class GeminiEmbeddingProvider:
+    """Google Gemini Embedding 2 text adapter using the Gemini REST API."""
+
+    def __init__(self, api_key: str, model_name: str = "gemini-embedding-2", output_dimension: int = 1536, base_url: str = "https://generativelanguage.googleapis.com/v1beta") -> None:
+        if not api_key:
+            raise ValueError("api_key must not be empty")
+        if output_dimension not in {768, 1536, 3072}:
+            raise ValueError("output_dimension must be one of 768, 1536, or 3072")
+        self._api_key = api_key
+        self._model_name = model_name
+        self._dimension = output_dimension
+        self._base_url = base_url.rstrip("/")
+
+    @property
+    def model_name(self) -> str:
+        return self._model_name
+
+    @property
+    def dimension(self) -> int:
+        return self._dimension
+
+    def embed_documents(self, texts: Sequence[str]) -> list[list[float]]:
+        if not texts or any(not text.strip() for text in texts):
+            raise ValueError("texts must contain at least one non-empty string")
+        try:
+            import httpx
+        except ImportError as exc:
+            raise RuntimeError("Install httpx to use GeminiEmbeddingProvider") from exc
+        embeddings = []
+        for text in texts:
+            response = httpx.post(
+                f"{self._base_url}/models/{self._model_name}:embedContent",
+                headers={"x-goog-api-key": self._api_key},
+                json={"content": {"parts": [{"text": text}]}, "output_dimensionality": self._dimension},
+                timeout=60,
+            )
+            response.raise_for_status()
+            values = response.json().get("embedding", {}).get("values")
+            if not values or len(values) != self._dimension:
+                raise RuntimeError("Gemini returned an invalid embedding dimension")
+            embeddings.append(values)
+        return embeddings
+
+    def embed_query(self, text: str) -> list[float]:
+        return self.embed_documents([text])[0]
+

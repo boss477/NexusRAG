@@ -25,7 +25,7 @@ Query -> Router -> Hybrid Retrieval -> Correction -> Generation
 
 ## 30-day roadmap
 
-The detailed plan is in [docs/30-day-plan.md](docs/30-day-plan.md). Days 1–4 are complete.
+The detailed plan is in [docs/30-day-plan.md](docs/30-day-plan.md). Days 1–7 are complete.
 
 ## Quick start
 
