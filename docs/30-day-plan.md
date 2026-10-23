@@ -70,21 +70,27 @@ Background:
 - Preserved PDF page citations.
 - Added deterministic chunk ordering and loader tests.
 
+### Day 5 — Sentence-aware chunking
+
+- Added paragraph and sentence-aware splitting.
+- Added configurable chunk size and overlap.
+- Added hard-split fallback and chunking tests.
+
+### Day 6 — Embedding provider interface
+
+- Added the provider-neutral `EmbeddingProvider` protocol.
+- Added deterministic hash embeddings for tests and local plumbing.
+- Added lazy BGE-M3 adapter through Sentence Transformers.
+- Added Ollama `/api/embed` adapter.
+- Added validation and normalized-vector tests.
+
 ## Core RAG foundation
 
-### Day 5 — Chunking
+### Day 7 — Gemini Embedding 2
 
 - Add paragraph and sentence-aware splitting.
 - Add configurable chunk size and overlap.
 - Preserve section headings and source metadata.
-
-### Day 6 — Embedding provider interface
-
-- Define a provider-neutral embedding interface.
-- Add local BGE-M3 and Ollama adapters.
-- Add embedding dimension validation.
-
-### Day 7 — Gemini Embedding 2
 
 - Add Gemini Embedding 2 adapter.
 - Support text, image, audio, video, and PDF inputs.

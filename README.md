@@ -43,7 +43,7 @@ Open http://localhost:8000/docs.
 
 ## Current status
 
-Day 1–3 are complete: project foundation, settings/logging/readiness hardening, and canonical document schemas are in place.
+Day 1–6 are complete: project foundation, document ingestion, chunking, and provider-neutral embeddings are in place.
 
 Decisions are recorded in [docs/](docs/).
 
