@@ -103,14 +103,10 @@ Background:
 
 ### Day 9 — Qdrant indexing
 
-- Create collections with dimension checks.
-- Index `DocumentChunk` records.
-- Add idempotent upserts using document checksums.
-- Add collection and index tests.
-- Embed user queries.
-- Retrieve top-k chunks from Qdrant.
-- Return scores and citation metadata.
-- Add semantic-search evaluation cases.
+- Added dimension-checked Qdrant collection creation.
+- Indexed `DocumentChunk` records with checksum-derived stable point IDs.
+- Added idempotent upserts and in-memory Qdrant tests.
+- Added query embedding, top-k semantic retrieval, scores, and citation metadata.
 
 ### Day 10 — Keyword retrieval
 

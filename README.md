@@ -25,7 +25,7 @@ Query -> Router -> Hybrid Retrieval -> Correction -> Generation
 
 ## 30-day roadmap
 
-The detailed plan is in [docs/30-day-plan.md](docs/30-day-plan.md). Days 1–8 are complete.
+The detailed plan is in [docs/30-day-plan.md](docs/30-day-plan.md). Days 1–9 are complete locally; only Days 1–8 are published so far.
 
 ## Quick start
 
@@ -43,7 +43,7 @@ Open http://localhost:8000/docs.
 
 ## Current status
 
-Days 1–8 are complete: project foundation, document ingestion, chunking, and provider-neutral embeddings are in place. Day 8 adds an optional local EmbeddingGemma 2 adapter; see [docs/day-08-embeddinggemma.md](docs/day-08-embeddinggemma.md).
+Days 1–9 are complete locally: project foundation, document ingestion, chunking, embeddings, and Qdrant semantic retrieval. Day 9 is documented in [docs/day-09-qdrant.md](docs/day-09-qdrant.md).
 
 Decisions are recorded in [docs/](docs/).
 

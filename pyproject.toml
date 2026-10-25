@@ -16,6 +16,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+qdrant = ["qdrant-client>=1.12,<2"]
 embeddinggemma = [
   "sentence-transformers>=5.1",
   "transformers>=4.56",
