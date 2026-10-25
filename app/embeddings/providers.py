@@ -89,6 +89,95 @@ class BGEEmbeddingProvider:
             raise ValueError("texts must contain at least one non-empty string")
 
 
+class EmbeddingGemmaProvider:
+    """Lazy local EmbeddingGemma 2 adapter for text and optional media."""
+
+    def __init__(
+        self,
+        dimension: int = 768,
+        load_vision: bool = False,
+        load_audio: bool = False,
+        model_name: str = "google/embeddinggemma-2",
+    ) -> None:
+        if dimension not in {128, 256, 512, 768}:
+            raise ValueError("dimension must be 128, 256, 512, or 768")
+        self._dimension = dimension
+        self._load_vision = load_vision
+        self._load_audio = load_audio
+        self._model_name = model_name
+        self._model = None
+
+    @property
+    def dimension(self) -> int:
+        return self._dimension
+
+    @property
+    def model_name(self) -> str:
+        return self._model_name
+
+    def embed_documents(self, texts: Sequence[str]) -> list[list[float]]:
+        if not texts or any(not text.strip() for text in texts):
+            raise ValueError("texts must contain at least one non-empty string")
+        self._load()
+        vectors = self._model.encode(
+            list(texts), prompt_name="Document", **self._encode_options()
+        )
+        return [self._vector(vector) for vector in vectors]
+
+    def embed_query(self, text: str) -> list[float]:
+        if not text.strip():
+            raise ValueError("text must not be empty")
+        self._load()
+        return self._vector(
+            self._model.encode(text, prompt_name="SearchQuery", **self._encode_options())
+        )
+
+    def embed_media(self, media: dict[str, object]) -> list[float]:
+        """Encode model-native image, audio, video, or interleaved input."""
+        if not media or not set(media).intersection({"image", "audio", "video"}):
+            raise ValueError("media must include image, audio, or video")
+        if ("image" in media or "video" in media) and not self._load_vision:
+            raise ValueError("vision encoder is disabled")
+        if "audio" in media and not self._load_audio:
+            raise ValueError("audio encoder is disabled")
+        self._load()
+        return self._vector(self._model.encode(media, **self._encode_options()))
+
+    def _encode_options(self) -> dict[str, object]:
+        return {"truncate_dim": self._dimension, "normalize_embeddings": True}
+
+    def _vector(self, values: object) -> list[float]:
+        vector = values.tolist() if hasattr(values, "tolist") else list(values)
+        if len(vector) != self._dimension or any(not math.isfinite(value) for value in vector):
+            raise RuntimeError("EmbeddingGemma returned an invalid embedding")
+        norm = math.sqrt(sum(value * value for value in vector))
+        if norm == 0:
+            raise RuntimeError("EmbeddingGemma returned a zero embedding")
+        return [value / norm for value in vector]
+
+    def _load(self) -> None:
+        if self._model is not None:
+            return
+        try:
+            import torch
+            from sentence_transformers import SentenceTransformer
+        except ImportError as exc:
+            raise RuntimeError(
+                "Install the embeddinggemma extra to use EmbeddingGemmaProvider"
+            ) from exc
+        config_kwargs = {}
+        if not self._load_vision:
+            config_kwargs["vision_config"] = None
+        if not self._load_audio:
+            config_kwargs["audio_config"] = None
+        dtype = torch.bfloat16 if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else torch.float32
+        self._model = SentenceTransformer(
+            self._model_name,
+            config_kwargs=config_kwargs,
+            model_kwargs={"torch_dtype": dtype},
+        )
+
+
 class OllamaEmbeddingProvider:
     """HTTP adapter for Ollama's local `/api/embed` endpoint."""
 

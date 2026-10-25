@@ -95,11 +95,11 @@ Background:
 
 ### Day 8 — EmbeddingGemma 2 and local multimodal embeddings
 
-- Add the local `google/embeddinggemma-2` adapter.
-- Support 768-dimensional multimodal embeddings.
-- Add optional text-only, image, audio, and video encoder loading.
-- Add task-specific query/document prefixes.
-- Add truncation and re-normalization tests.
+- Added the lazy local `google/embeddinggemma-2` adapter.
+- Added 768-dimensional multimodal embeddings and supported truncation dimensions.
+- Added optional text-only, vision (image/video), and audio encoder loading.
+- Added task-specific query/document prompts.
+- Added mocked truncation and re-normalization tests.
 
 ### Day 9 — Qdrant indexing
 
@@ -107,9 +107,6 @@ Background:
 - Index `DocumentChunk` records.
 - Add idempotent upserts using document checksums.
 - Add collection and index tests.
-
-### Day 9 — Semantic retrieval
-
 - Embed user queries.
 - Retrieve top-k chunks from Qdrant.
 - Return scores and citation metadata.

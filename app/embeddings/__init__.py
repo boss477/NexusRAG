@@ -3,6 +3,7 @@
 from app.embeddings.providers import (
     BGEEmbeddingProvider,
     EmbeddingProvider,
+    EmbeddingGemmaProvider,
     GeminiEmbeddingProvider,
     HashEmbeddingProvider,
     OllamaEmbeddingProvider,
@@ -11,6 +12,7 @@ from app.embeddings.providers import (
 __all__ = [
     "BGEEmbeddingProvider",
     "EmbeddingProvider",
+    "EmbeddingGemmaProvider",
     "GeminiEmbeddingProvider",
     "HashEmbeddingProvider",
     "OllamaEmbeddingProvider",

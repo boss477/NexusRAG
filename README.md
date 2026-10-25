@@ -25,7 +25,7 @@ Query -> Router -> Hybrid Retrieval -> Correction -> Generation
 
 ## 30-day roadmap
 
-The detailed plan is in [docs/30-day-plan.md](docs/30-day-plan.md). Days 1–7 are complete.
+The detailed plan is in [docs/30-day-plan.md](docs/30-day-plan.md). Days 1–8 are complete.
 
 ## Quick start
 
@@ -43,7 +43,7 @@ Open http://localhost:8000/docs.
 
 ## Current status
 
-Day 1–6 are complete: project foundation, document ingestion, chunking, and provider-neutral embeddings are in place.
+Days 1–8 are complete: project foundation, document ingestion, chunking, and provider-neutral embeddings are in place. Day 8 adds an optional local EmbeddingGemma 2 adapter; see [docs/day-08-embeddinggemma.md](docs/day-08-embeddinggemma.md).
 
 Decisions are recorded in [docs/](docs/).
 
