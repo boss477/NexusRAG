@@ -121,9 +121,9 @@ Background:
 
 ### Day 12 — Cross-encoder reranking
 
-- Add cross-encoder reranker interface.
-- Rerank fused candidates.
-- Add top-k and latency configuration.
+- Added lazy cross-encoder reranker with injectable scorer.
+- Reranked fused candidates by pairwise scores.
+- Added top-k and maximum-candidate latency budget.
 
 ## Agentic and corrective RAG
 
