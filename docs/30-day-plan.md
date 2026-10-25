@@ -110,9 +110,9 @@ Background:
 
 ### Day 10 — Keyword retrieval
 
-- Add SQLite FTS5/BM25 index.
-- Support incremental indexing.
-- Add keyword-sensitive retrieval tests.
+- Added SQLite FTS5/BM25 index.
+- Added incremental idempotent indexing.
+- Added keyword-sensitive and query-safety tests.
 
 ### Day 11 — Hybrid retrieval
 
