@@ -25,7 +25,7 @@ Query -> Router -> Hybrid Retrieval -> Correction -> Generation
 
 ## 30-day roadmap
 
-The detailed plan is in [docs/30-day-plan.md](docs/30-day-plan.md). Days 1–10 are complete locally; only Days 1–8 are published so far.
+The detailed plan is in [docs/30-day-plan.md](docs/30-day-plan.md). Days 1–11 are complete locally; only Days 1–8 are published so far.
 
 ## Quick start
 
@@ -43,7 +43,7 @@ Open http://localhost:8000/docs.
 
 ## Current status
 
-Days 1–10 are complete locally: project foundation, ingestion, chunking, embeddings, Qdrant semantic retrieval, and SQLite keyword retrieval. Day 10 is documented in [docs/day-10-keyword.md](docs/day-10-keyword.md).
+Days 1–11 are complete locally: ingestion, embeddings, semantic and keyword retrieval, and RRF fusion. Day 11 is documented in [docs/day-11-hybrid.md](docs/day-11-hybrid.md).
 
 Decisions are recorded in [docs/](docs/).
 

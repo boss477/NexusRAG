@@ -116,9 +116,8 @@ Background:
 
 ### Day 11 — Hybrid retrieval
 
-- Implement Reciprocal Rank Fusion.
-- Deduplicate results across semantic and keyword search.
-- Add retrieval score normalization.
+- Added Reciprocal Rank Fusion over ranked semantic and keyword hits.
+- Deduplicated chunks across retrievers and normalized incompatible scores by rank.
 
 ### Day 12 — Cross-encoder reranking
 
