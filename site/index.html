@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NexusRAG, a RAG system built one tested slice a day</title>
+<meta name="description" content="NexusRAG is a corrective, multimodal RAG system built in thirty daily slices. Twelve are done: ingestion, embeddings, hybrid retrieval, fusion and reranking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:wght@400;700&family=Radio+Canada:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="gridlines container cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<div class="top">
+  <div class="container top__inner">
+    <div class="top__field" aria-hidden="true"></div>
+    <header class="nav cols">
+      <a class="wordmark" href="#main" aria-label="NexusRAG">NexusRAG</a>
+      <nav aria-label="Page">
+        <ul class="nav__links">
+          <li><a href="#pipeline">Pipeline</a></li>
+          <li><a href="#days">Days</a></li>
+          <li><a href="#run">Run it</a></li>
+          <li><a href="https://github.com/boss477/NexusRAG">GitHub</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero cols" id="main">
+      <div class="hero__text">
+        <h1>One tested slice a day</h1>
+        <p class="lead">NexusRAG is a corrective, multimodal RAG system built in thirty daily slices.</p>
+        <div class="actions">
+          <a class="btn" href="https://github.com/boss477/NexusRAG">Read the code</a>
+          <a class="link" href="#days">See the thirty days</a>
+        </div>
+      </div>
+      <figure class="hero__figure"><b class="num">12</b><figcaption>of 30 days built and tested</figcaption></figure>
+    </section>
+  </div>
+</div>
+
+<main>
+<section class="pipeline" id="pipeline">
+  <div class="container">
+    <div class="head cols">
+      <h2>Five stages from query to citation</h2>
+    </div>
+    <ol class="stages">
+      <li class="cols"><h3>Router</h3><p>Picks the retrievers for each query.</p><small>Planned</small></li>
+      <li class="cols"><h3>Hybrid retrieval</h3><p>Qdrant dense search beside SQLite keyword search.</p><small data-built>Built</small></li>
+      <li class="cols"><h3>Fusion and reranking</h3><p>Reciprocal Rank Fusion, then a cross-encoder.</p><small data-built>Built</small></li>
+      <li class="cols"><h3>Correction</h3><p>Grades evidence sentence by sentence.</p><small>Planned</small></li>
+      <li class="cols"><h3>Generation and grounding</h3><p>Answers from surviving evidence, with citations.</p><small>Planned</small></li>
+    </ol>
+  </div>
+</section>
+
+<section class="days" id="days">
+  <div class="container cols">
+    <h2>Pick a day, see its slice</h2>
+    <ol class="days__index" aria-label="The thirty days"></ol>
+    <div class="days__chosen" aria-live="polite">
+      <b class="num" data-day-num aria-hidden="true">12</b>
+      <h3 data-day-title>Day 12, cross-encoder reranking</h3>
+      <p data-day-meta>Core RAG foundation. Built and tested.</p>
+    </div>
+  </div>
+</section>
+
+<section class="rule">
+  <div class="container cols">
+    <blockquote>
+      <p>Every new feature must have a provider boundary, tests, and an evaluation path.</p>
+      <footer><a class="link" href="https://github.com/boss477/NexusRAG/blob/main/docs/30-day-plan.md">The scope rule, from the plan</a></footer>
+    </blockquote>
+  </div>
+</section>
+
+<section class="asks">
+  <div class="container cols">
+    <h2>Before you clone it</h2>
+    <dl>
+      <div class="cols"><dt>What runs today?</dt><dd>Document loaders, chunking, embeddings, semantic and keyword retrieval, fusion and reranking.</dd></div>
+      <div class="cols"><dt>What is not built yet?</dt><dd>The agents, corrective grading, generation, multimodal search, memory and evaluation.</dd></div>
+      <div class="cols"><dt>What does it need?</dt><dd>Python 3.11 or later. Docker Compose starts Qdrant and Redis.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="run" id="run">
+  <div class="container cols">
+    <div class="run__text">
+      <h2>Run it on your machine</h2>
+      <p class="lead">FastAPI serves its own docs at localhost:8000/docs.</p>
+      <a class="link" href="https://github.com/boss477/NexusRAG">Open the repository</a>
+    </div>
+    <figure>
+      <pre tabindex="0" aria-label="Quick start commands"><code>git clone https://github.com/boss477/NexusRAG.git
+cd NexusRAG
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+cp .env.example .env
+uvicorn app.main:app --reload</code></pre>
+      <figcaption>On Windows, activate with <code>.venv\Scripts\activate</code> and use <code>copy</code> in place of <code>cp</code>.</figcaption>
+    </figure>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="container cols">
+    <a class="wordmark" href="#main">NexusRAG</a>
+    <ul>
+      <li><a class="link" href="https://github.com/boss477/NexusRAG">Repository</a></li>
+      <li><a class="link" href="https://github.com/boss477/NexusRAG/blob/main/docs/30-day-plan.md">The 30-day plan</a></li>
+      <li><a class="link" href="https://github.com/boss477/NexusRAG/blob/main/docs/day-12-rerank.md">Day 12 notes</a></li>
+    </ul>
+    <small>Built in public by boss477.</small>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const phases = [[6, 'Foundation'], [12, 'Core RAG foundation'], [21, 'Agentic and corrective RAG'], [27, 'Multimodal and memory'], [30, 'Evaluation and production']];
+  const titles = ['repository foundation', 'foundation hardening', 'canonical document contracts', 'document loaders', 'sentence-aware chunking', 'embedding provider interface', 'Gemini Embedding 2', 'EmbeddingGemma 2 and local multimodal embeddings', 'Qdrant indexing', 'keyword retrieval', 'hybrid retrieval', 'cross-encoder reranking', 'LangGraph state', 'Router Agent', 'Laya decision adapter', 'Vega decision adapter', 'corrective grading', 'sentence-level correction', 'query rewriting and retry', 'generation and grounding', 'reflection loop', 'OCR and visual documents', 'audio and video', 'SQL and tabular retrieval', 'memory storage and recall', 'duplicate detection', 'sleep-phase consolidation', 'RAGAS and LangSmith', 'reliability and operations', 'release'];
+  const built = 12;
+  const list = document.querySelector('.days__index');
+  const num = document.querySelector('[data-day-num]'), title = document.querySelector('[data-day-title]'), meta = document.querySelector('[data-day-meta]');
+  const pick = (n) => {
+    list.querySelectorAll('.day').forEach((b) => b.setAttribute('aria-pressed', String(Number(b.textContent) === n)));
+    num.textContent = n;
+    title.textContent = 'Day ' + n + ', ' + titles[n - 1];
+    meta.textContent = phases.find((p) => n <= p[0])[1] + '. ' + (n <= built ? 'Built and tested.' : 'Planned.');
+  };
+  titles.forEach((t, i) => {
+    const li = document.createElement('li'), b = document.createElement('button');
+    b.type = 'button'; b.className = 'day'; b.textContent = i + 1;
+    b.setAttribute('aria-label', 'Day ' + (i + 1) + ', ' + t);
+    if (i < built) b.toggleAttribute('data-built', true);
+    b.addEventListener("click", () => pick(i + 1));
+    b.addEventListener("keydown", (e) => { const d = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 6, ArrowUp: -6 }[e.key]; if (!d) return; const n = Math.min(30, Math.max(1, i + 1 + d)); e.preventDefault(); pick(n); list.querySelectorAll(".day")[n - 1].focus(); });
+    li.append(b); list.append(li);
+  });
+  pick(built);
+})();
+</script>
+</body>
+</html>
